@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – MealPlanner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="logo-icon">🍽️</div>
+      <div>
+        <span class="logo-name">MealPlanner</span>
+        <span class="logo-sub">Planifică simplu</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="planificator.html">Planificator</a></li>
+      <li><a href="retete.html">Rețete</a></li>
+      <li><a href="despre.html">Despre</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="planificator.html" class="btn-primary">Începe acum</a>
+  </nav>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>Informații de contact</h2>
+      <p>Echipa noastră este gata să răspundă la toate întrebările tale despre planificarea meselor.</p>
+      <div class="contact-item">
+        <div class="contact-icon icon-green">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p>contact@mealplanner.ro</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon icon-yellow">📞</div>
+        <div>
+          <h4>Telefon</h4>
+          <p>+40 123 456 789</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon icon-gray">📍</div>
+        <div>
+          <h4>Adresă</h4>
+          <p>Str. Exemplu nr. 123<br>București, România</p>
+        </div>
+      </div>
+      <div class="schedule-box">
+        <h4>Program de lucru</h4>
+        <div class="schedule-row"><span>Luni - Vineri:</span><span>9:00 - 18:00</span></div>
+        <div class="schedule-row"><span>Sâmbătă:</span><span>10:00 - 14:00</span></div>
+        <div class="schedule-row"><span>Duminică:</span><span>Închis</span></div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Trimite-ne un mesaj</h3>
+      <div class="form-group">
+        <label>Nume complet *</label>
+        <input type="text" placeholder="Ionescu Maria">
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" placeholder="maria@example.com">
+      </div>
+      <div class="form-group">
+        <label>Subiect *</label>
+        <input type="text" placeholder="Întrebare despre planificator">
+      </div>
+      <div class="form-group">
+        <label>Mesaj *</label>
+        <textarea placeholder="Scrie mesajul tău aici..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="sendMessage()">
+        📨 Trimite mesaj
+      </button>
+      <div id="successMsg" style="display:none;margin-top:16px;padding:14px;background:#e8f7ef;border-radius:10px;color:#2d6a4f;text-align:center;font-weight:600;">
+        ✅ Mesajul a fost trimis cu succes!
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 MealPlanner. Toate drepturile rezervate.</p>
+  </footer>
+
+  <script>
+    function sendMessage() {
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>

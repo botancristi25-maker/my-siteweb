@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rețete – MealPlanner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=b60locoGmM1ub_kjcBC-FVHosoNl-fcMFOJ0KvuM_P4IowXA6jwK91K2_DIILu_4dT3RF_pppLjMN9Lcrq6lEvhdocLowcYWf4oGUybSMrOX9mK-wLUBEBZr26xHFdvV1_gVTDJTtgvKz8xElCBltA24bx66TCZQzJo54MQN1JGnF0NqHyrwXcb6MU4uzz-A7GBPvIrxUda5r-GPLpAjJ8zgAytnXFOju3VncRV5vOWTrPzUtSsFnoWoFEnnL_nx_IOZN7OIC_xQ1nc76PbTa1waGuqBbaZ1DfJfOmFUNn6bKoGn98aD-Mh82UnC2wPYiXrEy2UO5W7VquoaqZ8nJ-URIoM7Iy5CuOO26fI-XbRkXCPQdy0xjMi7r7lFiMM7V5K8RhGlyrTNHOZG0UTxXZliJIpAWYF5qqUfgclwE2nwQoh_H29HEEvliCfFCSvZPpnY3JMtHGGWSR2wyVCSlWl2CFPgMse4FeNT3yzP1Ueq1nIaiUsLw1y2rbcXcNYM6w37lhQeh0l6MNoB-UI0w6sWmLkx-ek6uYZhXylLBKFsaWQqSpbCp3j3OOS4a4XsL8J7Q3oMwZUgWI9ONh0meeY0eJBLVrUB_nVw20qsc-Pk-r-Ec26507ATmKT9Kd9k9E7A_xSfFtQvMl3DIomZ3LZnxc_zukpB5uBKbYEMaZgLie4IJvDNTcAXeUJ7c8VMU9w2ItSnAAlM4FtYwoxle8gLvehpxte4B3q2bOIkfv78HRHjk9RQZjS_crrtQg4N-1CmAXUDL7YmSphJLZNtS7vGcH5v_yPKiP5y1nFX9varc3bvcMwHko0kmOrnnd2Km3dJXces2EGY7TphmRehhewvX3OeEsaiyj4-CmZSeR7k4LigDGRVJBXTFRA7isXiQL3suxQgf_vQQflN07R9CNvKjYOHT5ZPwHmcFlkTN-sSR1WtYk43_xI2Akhb9IHNTo9_sdIaP3IUckq78Lwnt_m6jO7QF4DxsAHl-nsm_xNqiz9NN5Kicb79bEcfBQcTHbpGFB8IkHtGlokxJrQ8ISM9crAi9bp_Hce8mIr2GG0fZQetYFczBqzwmeKpGH3lenwdHvfXFqK9csg47L-TeMnCCuuLdRI6MBBG_-OJOF4AR_2mCpp-rylv7hV8NHh9jfjqSGan1NwZRwjKcFKPBD3lxjhvK8IN59u6iWCWp2oUR7whj8fuGpy1W3oBGpYMd186iAepBgpbcFF2qhq89-nIfFY0XNcdTaeRzgvRxBMiHc6MDOCfmG2gm7GiXBUm8n9nWeks8__eZRcxdokVRUgPW5gFZ4WRbHnAJF_JOiudi76-D96WrArtud9JZCY4GnFl7Ux6PAvFr7IjKa8Kg7OUiFqQzrz7qg3zx-cZLYqYWlkZaHlam0X6m9-DSWLJkozMvP_bBSN7UXyD3EoU55cAF4ZMZmvVfIPcIMEmk9switj1AAPANEoV2aXD9dJDaMOaKhkcQDeDYX38ernsE64G9xjNNVriwILuV6PmgY-w0koFjGko2Nj07KsM_x6Ye0Bf3eKhHTYHQ1gdt_Z3LYnys199iKbw80bK_OdguxXQd3BDElF7_bcHESAiI49Wk-nKL9doHtNapNxGNoNWexfqe5QyjFc3NqC2EyXqPPwFRR_jr5zePhsx7D6MU57NFvcS_SeaZ1ziAUqRzJ25kjdAcQ9I1o_V35KGPNtKmi1rN1MOgoduR8RXgikN9ix5" nonce="43ff8b6ecc419b207af0639479636e92" charset="UTF-8"></script><style>
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 20px;
+      max-width: 560px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-img { width: 100%; height: 220px; object-fit: cover; border-radius: 20px 20px 0 0; }
+    .modal-body { padding: 28px; }
+    .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .modal-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: #1a2e3b; }
+    .modal-close {
+      width: 32px; height: 32px; border-radius: 50%; border: none;
+      background: #f1f5f9; cursor: pointer; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.2s;
+    }
+    .modal-close:hover { background: #e0e6ed; }
+    .modal-meta { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+    .modal-time { color: #6b7a8d; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+    .modal-section { margin-bottom: 20px; }
+    .modal-section h4 {
+      font-size: 15px; font-weight: 700; color: #1a2e3b;
+      margin-bottom: 10px; padding-bottom: 6px;
+      border-bottom: 2px solid #e8f7ef;
+    }
+    .modal-section ul { list-style: none; padding: 0; }
+    .modal-section ul li {
+      font-size: 14px; color: #2d3a45; padding: 5px 0;
+      padding-left: 16px; position: relative;
+    }
+    .modal-section ul li::before { content: "•"; color: #6fcf97; font-weight: bold; position: absolute; left: 0; }
+    .modal-section ol { padding-left: 20px; }
+    .modal-section ol li { font-size: 14px; color: #2d3a45; padding: 5px 0; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="logo-icon">🍽️</div>
+      <div>
+        <span class="logo-name">MealPlanner</span>
+        <span class="logo-sub">Planifică simplu</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="planificator.html">Planificator</a></li>
+      <li><a href="retete.html" class="active">Rețete</a></li>
+      <li><a href="despre.html">Despre</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="planificator.html" class="btn-primary">Începe acum</a>
+  </nav>
+
+  <div class="page-header">
+    <h1>Colecția noastră de rețete</h1>
+    <p>Descoperă rețete delicioase și sănătoase pentru fiecare masă</p>
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Caută rețete..." oninput="filterRecipes()">
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="filter-label">🔽 Filtrează:</span>
+    <button class="filter-btn active-green" onclick="setFilter('all', this)">Toate</button>
+    <button class="filter-btn" onclick="setFilter('mic-dejun', this)">Mic dejun</button>
+    <button class="filter-btn" onclick="setFilter('pranz', this)">Prânz</button>
+    <button class="filter-btn" onclick="setFilter('cina', this)">Cină</button>
+    <button class="filter-btn active-yellow" onclick="setDiff('all', this)">Toate</button>
+    <button class="filter-btn" onclick="setDiff('usor', this)">Ușor</button>
+    <button class="filter-btn" onclick="setDiff('mediu', this)">Mediu</button>
+    <button class="filter-btn" onclick="setDiff('dificil', this)">Dificil</button>
+  </div>
+
+  <div class="recipes-count" id="countLabel">9 rețete găsite</div>
+
+  <div class="recipes-grid" id="recipesGrid">
+
+    <div class="recipe-card" data-meal="mic-dejun" data-diff="usor">
+      <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=500&q=80" alt="Breakfast Bowl">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Mic dejun</span><span class="tag tag-easy">Ușor</span></div>
+        <h3>Breakfast Bowl cu Fructe</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 15 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('breakfast-bowl')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="pranz" data-diff="mediu">
+      <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=500&q=80" alt="Paste Carbonara">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Prânz</span><span class="tag tag-medium">Mediu</span></div>
+        <h3>Paste Carbonara Clasice</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 30 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('carbonara')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="cina" data-diff="usor">
+      <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?w=500&q=80" alt="Salata Caesar">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Cină</span><span class="tag tag-easy">Ușor</span></div>
+        <h3>Salată Caesar cu Pui</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 20 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('caesar')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="mic-dejun" data-diff="usor">
+      <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500&q=80" alt="Avocado Toast">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Mic dejun</span><span class="tag tag-easy">Ușor</span></div>
+        <h3>Avocado Toast cu Ou Poșat</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 10 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('avocado')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="cina" data-diff="mediu">
+      <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&q=80" alt="Pui la Gratar">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Cină</span><span class="tag tag-medium">Mediu</span></div>
+        <h3>Pui la Grătar cu Legume</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 45 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('pui-gratar')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="mic-dejun" data-diff="usor">
+      <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&q=80" alt="Smoothie Bowl">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Mic dejun</span><span class="tag tag-easy">Ușor</span></div>
+        <h3>Smoothie Bowl Energizant</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 10 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('smoothie')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="cina" data-diff="mediu">
+      <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&q=80" alt="Somon">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Cină</span><span class="tag tag-medium">Mediu</span></div>
+        <h3>Somon la Cuptor cu Asparagus</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 35 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('somon')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="pranz" data-diff="usor">
+      <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&q=80" alt="Supa">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Prânz</span><span class="tag tag-easy">Ușor</span></div>
+        <h3>Supă Cremă de Legume</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 25 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('supa')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-meal="pranz" data-diff="mediu">
+      <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?w=500&q=80" alt="Burger Vegetal">
+      <div class="recipe-info">
+        <div class="recipe-tags"><span class="tag tag-meal">Prânz</span><span class="tag tag-medium">Mediu</span></div>
+        <h3>Burger Vegetal cu Cartofi Dulci</h3>
+        <div class="recipe-meta">
+          <span class="recipe-time">🕐 40 min</span>
+          <button class="btn-primary" style="padding:8px 16px;font-size:13px;" onclick="openModal('burger')">Vezi rețeta</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 MealPlanner. Toate drepturile rezervate.</p>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+    <div class="modal" id="modalBox">
+      <img id="modalImg" class="modal-img" src="" alt="">
+      <div class="modal-body">
+        <div class="modal-header">
+          <span class="modal-title" id="modalTitle"></span>
+          <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-section">
+          <h4>🛒 Ingrediente</h4>
+          <ul id="modalIngredients"></ul>
+        </div>
+        <div class="modal-section">
+          <h4>👨‍🍳 Mod de preparare</h4>
+          <ol id="modalSteps"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const recipes = {
+      'breakfast-bowl': {
+        title: 'Breakfast Bowl cu Fructe',
+        img: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=600&q=80',
+        time: '15 min', tags: ['Mic dejun', 'Ușor'],
+        ingredients: ['150g iaurt grecesc','50g fulgi de ovăz','1 banană feliată','O mână de afine','O mână de căpșuni feliate','1 lingură miere','1 lingură semințe de chia','Granola după gust'],
+        steps: ['Pune iaurtul grecesc într-un bol adânc.','Adaugă fulgii de ovăz și amestecă ușor.','Aranjează banana feliată, afinele și căpșunile deasupra.','Presară semințele de chia și granola.','Toarnă mierea deasupra și servește imediat.']
+      },
+      'carbonara': {
+        title: 'Paste Carbonara Clasice',
+        img: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&q=80',
+        time: '30 min', tags: ['Prânz', 'Mediu'],
+        ingredients: ['400g spaghete','200g pancetta sau bacon','4 gălbenușuri de ou','100g parmezan ras','50g pecorino ras','2 căței de usturoi','Sare și piper negru după gust','Pătrunjel proaspăt pentru decor'],
+        steps: ['Fierbe pastele în apă sărată conform instrucțiunilor.','Prăjește pancetta cu usturoiul până devine crocantă.','Amestecă gălbenușurile cu parmezanul și pecorino ras.','Scurge pastele, păstrând o cană din apa de fierbere.','Adaugă pastele în tigaia cu pancetta, oprește focul.','Toarnă amestecul de ouă și brânză, amestecând rapid.','Adaugă puțin din apa de paste pentru o cremă fină.','Servește imediat cu piper negru și parmezan.']
+      },
+      'caesar': {
+        title: 'Salată Caesar cu Pui',
+        img: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=600&q=80',
+        time: '20 min', tags: ['Cină', 'Ușor'],
+        ingredients: ['2 piepturi de pui','1 salată romană mare','50g parmezan ras','100g crutoane','3 linguri maioneză','1 linguriță muștar Dijon','1 cățel de usturoi','Suc de la jumătate de lămâie','Sare și piper după gust'],
+        steps: ['Condimentează puiul cu sare, piper și ulei de măsline.','Gătește puiul 6-7 minute pe fiecare parte.','Lasă-l să se răcorească și taie-l în fâșii.','Amestecă maioneza, mustarul, usturoiul și sucul de lămâie.','Rupe salata romană și pune-o într-un bol.','Adaugă sosul și amestecă bine.','Pune deasupra puiul, crutoanele și parmezanul.','Servește imediat.']
+      },
+      'avocado': {
+        title: 'Avocado Toast cu Ou Poșat',
+        img: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&q=80',
+        time: '10 min', tags: ['Mic dejun', 'Ușor'],
+        ingredients: ['2 felii pâine integrală','1 avocado copt','2 ouă','Suc de la jumătate de lămâie','Fulgi de chili roșu','Sare și piper după gust','Semințe de susan (opțional)','Câteva frunze de rucola'],
+        steps: ['Prăjește feliile de pâine în toaster.','Zdrobește avocado cu sucul de lămâie, sare și piper.','Fierbe apă cu puțin oțet alb.','Creează un vârtej și adaugă oul spart dintr-un bol mic.','Fierbe 3 minute pentru gălbenuș moale.','Întinde pasta de avocado pe pâine.','Pune oul poșat deasupra.','Presară chili, semințe de susan și rucola.']
+      },
+      'pui-gratar': {
+        title: 'Pui la Grătar cu Legume',
+        img: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80',
+        time: '45 min', tags: ['Cină', 'Mediu'],
+        ingredients: ['4 piepturi de pui','2 ardei grași (roșu și galben)','2 dovlecei','1 vânătă','4 linguri ulei de măsline','3 căței de usturoi','Rozmarin și cimbru proaspăt','Sare, piper și boia după gust'],
+        steps: ['Marinează puiul în ulei, usturoi, rozmarin, sare 20 min.','Taie legumele în felii groase de 1 cm.','Condimentează legumele cu ulei, sare și piper.','Încălzește grătarul la foc mediu-mare.','Gătește puiul 7-8 minute pe fiecare parte.','Gătește legumele 3-4 minute pe fiecare parte.','Servește cu suc de lămâie deasupra.']
+      },
+      'smoothie': {
+        title: 'Smoothie Bowl Energizant',
+        img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&q=80',
+        time: '10 min', tags: ['Mic dejun', 'Ușor'],
+        ingredients: ['1 banană congelată','150g fructe de pădure congelate','100ml lapte de cocos','2 linguri pudră de spirulină (opțional)','Căpșuni, kiwi, nucă de cocos rasă','Granola și semințe de floarea-soarelui','1 linguriță miere'],
+        steps: ['Pune banana și fructele de pădure în blender.','Adaugă laptele de cocos și spirulina.','Mixează până obții o compoziție cremoasă și groasă.','Toarnă în bol — trebuie să fie mai gros ca un smoothie.','Aranjează toppingurile artistic deasupra.','Servește imediat cu o lingură.']
+      },
+      'somon': {
+        title: 'Somon la Cuptor cu Asparagus',
+        img: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80',
+        time: '35 min', tags: ['Cină', 'Mediu'],
+        ingredients: ['2 fileuri de somon (180g fiecare)','300g asparagus','3 linguri ulei de măsline','2 căței de usturoi','1 lămâie','Mărar proaspăt','Sare și piper după gust','1 linguriță miere','1 linguriță muștar Dijon'],
+        steps: ['Preîncălzește cuptorul la 200°C.','Prepară un sos din ulei, usturoi, miere, muștar, lămâie, sare.','Pune somonul și asparagusul pe o tavă cu hârtie de copt.','Toarnă sosul peste somon și asparagus.','Adaugă felii subțiri de lămâie peste somon.','Coace 18-20 de minute până somonul se desface ușor.','Presară mărar proaspăt și servește imediat.']
+      },
+      'supa': {
+        title: 'Supă Cremă de Legume',
+        img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80',
+        time: '25 min', tags: ['Prânz', 'Ușor'],
+        ingredients: ['3 morcovi','2 cartofi','1 ceapă','2 căței de usturoi','1 litru supă de legume','100ml smântână de gătit','2 linguri ulei de măsline','Cimbru și dafin','Sare, piper și nucșoară după gust','Crutoane pentru servit'],
+        steps: ['Curăță și taie toate legumele cuburi.','Călește ceapa și usturoiul în ulei 3 minute.','Adaugă morcovii și cartofii, amestecă 2 minute.','Toarnă supa de legume, adaugă cimbru și dafinul.','Fierbe 15-18 minute până legumele sunt moi.','Scoate dafinul și mixează cu un blender vertical.','Adaugă smântâna și condimentează după gust.','Servește cu crutoane și un fir de smântână.']
+      },
+      'burger': {
+        title: 'Burger Vegetal cu Cartofi Dulci',
+        img: 'https://images.unsplash.com/photo-1551782450-17144efb9c50?w=600&q=80',
+        time: '40 min', tags: ['Prânz', 'Mediu'],
+        ingredients: ['2 cartofi dulci mari','1 conservă năut (400g)','1 ou','3 linguri pesmet','1 ceapă roșie','2 căței de usturoi','Chimen, coriandru și boia afumată','4 chifle pentru burger','Salată verde, roșii, avocado','Sos de iaurt cu usturoi'],
+        steps: ['Coace cartofii dulci la 200°C timp de 30 de minute.','Zdrobește năutul cu furculița într-un bol.','Amestecă năutul cu cartofii copți, oul, pesmetul și condimentele.','Formează 4 chiftele și pune-le la frigider 15 minute.','Prăjește în ulei la foc mediu, 4-5 minute pe fiecare parte.','Pregătește sosul de iaurt cu usturoi și mărar.','Asamblează: chiflă, sos, salată, chiftelă, roșii, avocado.','Servește cu cartofi dulci la cuptor.']
+      }
+    };
+
+    function openModal(id) {
+      const r = recipes[id];
+      if (!r) return;
+      document.getElementById('modalImg').src = r.img;
+      document.getElementById('modalTitle').textContent = r.title;
+      document.getElementById('modalMeta').innerHTML =
+        `<span class="modal-time">🕐 ${r.time}</span>` +
+        r.tags.map(t => `<span class="tag tag-meal">${t}</span>`).join('');
+      document.getElementById('modalIngredients').innerHTML = r.ingredients.map(i => `<li>${i}</li>`).join('');
+      document.getElementById('modalSteps').innerHTML = r.steps.map(s => `<li>${s}</li>`).join('');
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOutside(e) {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    let activeFilter = 'all';
+    let activeDiff = 'all';
+
+    function setFilter(val, btn) {
+      activeFilter = val;
+      document.querySelectorAll('.filter-btn').forEach((b, i) => { if (i < 4) b.classList.remove('active-green'); });
+      btn.classList.add('active-green');
+      filterRecipes();
+    }
+
+    function setDiff(val, btn) {
+      activeDiff = val;
+      document.querySelectorAll('.filter-btn').forEach((b, i) => { if (i >= 4) b.classList.remove('active-yellow'); });
+      btn.classList.add('active-yellow');
+      filterRecipes();
+    }
+
+    function filterRecipes() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.recipe-card');
+      let visible = 0;
+      cards.forEach(card => {
+        const meal = card.dataset.meal;
+        const diff = card.dataset.diff;
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const matchMeal = activeFilter === 'all' || meal === activeFilter;
+        const matchDiff = activeDiff === 'all' || diff === activeDiff;
+        const matchSearch = name.includes(query);
+        if (matchMeal && matchDiff && matchSearch) { card.style.display = ''; visible++; }
+        else { card.style.display = 'none'; }
+      });
+      document.getElementById('countLabel').textContent = visible + ' rețete găsite';
+    }
+  </script>
+
+</body>
+</html>
